@@ -13,7 +13,7 @@ spec:
   selector:
     app: maven
 ---
-apiVersion: extensions/v1brta1
+apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: maven-deployment
@@ -31,4 +31,4 @@ spec:
             - containerPort: 8080
           env:
             - name: key
-            value: "value"
+              value: "value"
