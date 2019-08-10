@@ -12,17 +12,23 @@ spec:
       protocol: TCP
   selector:
     app: maven
-  ---
-  apiVersion: extensions/v1brta1
-  kind: Deployment
-  metadata:
-    name: maven-deployment
-  spec:
-    containers:
-      - name: maven
-        image: 192.168.1.20:5000/maven:latest
-        ports:
-        - containerPort: 8080
-        env:
-          - name: key
+---
+apiVersion: extensions/v1brta1
+kind: Deployment
+metadata:
+  name: maven-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: maven
+    spec:
+      containers:
+        - name: maven
+          image: 192.168.1.20:5000/maven:latest
+          ports:
+            - containerPort: 8080
+          env:
+            - name: key
             value: "value"
